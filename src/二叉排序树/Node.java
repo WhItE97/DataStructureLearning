@@ -120,4 +120,22 @@ public class Node {
 		//找完了都没有
 		return null;
 	}
+
+	public Node searchParent(int value) {
+		if((this.left!=null&&this.left.value==value)||(this.right!=null&&this.right.value==value)) {
+			return this;
+		}
+		else {
+			//如果value比当前节点小，则往左子找
+			if(this.value>value&&this.left!=null) {
+				return this.left.searchParent(value);
+			}
+			//如果value大于当前节点，往右子找
+			if(this.value<value&&this.right!=null) {
+				return this.right.searchParent(value);
+			}
+			//都没找到
+			return null;
+		}
+	}
 }
