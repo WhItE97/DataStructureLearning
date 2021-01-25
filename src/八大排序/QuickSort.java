@@ -35,6 +35,12 @@ public class QuickSort {
 				//如果第二个小while中 arr[left]==pivot，不跳过，而置换
 				//则arr[right]=arr[left]==pivot,且right没有做--处理；进入下一次大循环的时候arr[right]就始终==pivot
 				//小while 1和小while 2都不会对left和right进行更改，从而导致无限地arr[left]和arr[right]互相赋值——>陷入死循环
+				/**
+				 * 2021.1.25 剑指offer39，数组中出现次数超过一半的数字->用快排的分治partition，review发现，该题的partition不能都取等，
+				 * 只能其中一个取等=>一轮过去，必定有等于自己的都在小的那一边or大的那一边！
+				 * 而快排之所以可以都取等=>就算何自己相等的分布在自己的两侧，后续的递归也会最终改为正确顺序！
+				 * 【Con：快排中可以都取等，但最好只取一个，把和自己相等的元素都挪到一边！】
+				 */
 				while(left<right && arr[right]>=pivot){
 					right--;
 				}
